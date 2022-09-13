@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 function Countries() {
     const [countries,setcountries] = React.useState([])
@@ -11,15 +11,24 @@ function Countries() {
     return (
         <div>
             <h1>Countries</h1>
-            <ul>
-                {
-                    countries && countries.map((c,i)=>{
-                        return <li key={i}>
-                            <Link to={`/countryDetails/${c.alpha2Code}`}>{c.name}</Link>
-                        </li>
-                    })
-                }
-            </ul>
+            <div className='d-flex h-100'>
+                <div className='w-50 h-100 overflow-auto'>
+                    <ul>
+                        {
+                            countries && countries.map((c,i)=>{
+                                return <li key={i}>
+                                    <Link to={`/countries/${c.alpha2Code}`}>{c.name}</Link>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </div>
+                <div className='w-50'>
+                    <Outlet></Outlet>
+                </div>
+            </div>
+            
+            
         </div>
     )
 }
