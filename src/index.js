@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Countries from './Countries';
 import Home from './Home';
+import CountryDetails from './CountryDetails';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,7 +21,8 @@ root.render(
         <Route path="/" element={<App></App>}>
           <Route index element={<Home></Home>}></Route>
           <Route path="/countries" element={<Countries></Countries>}></Route>
-          <Route  element={<Home></Home>}></Route>
+          <Route path="/home" element={<Home></Home>}></Route>
+          <Route path="/countryDetails/:c" element={<CountryDetails></CountryDetails>}></Route>
         </Route>
         
       </Routes>
