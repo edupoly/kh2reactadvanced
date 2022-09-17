@@ -9,9 +9,14 @@ function Cart({products:{cart},dispatch}) {
         }
         dispatch({type:'DEC-CART-PROD-COUNT',payload:cp})
     }
+    function total(){
+        return cart.reduce((a,b)=>{
+            return a+(b.price*b.count)
+        },0)
+    }
   return (
     <div className='container'>
-        <table className="table table-striped">
+        <table className="table table-striped text-center">
             <thead>
             <tr>
                 <th>Product</th>
@@ -25,17 +30,16 @@ function Cart({products:{cart},dispatch}) {
             {
                 cart.map((cp,i)=>{
                     return(<tr>
-                        <td>
-                            {cp.title}</td>
+                        <td className='text-right'>{cp.title}</td>
                         <td>{cp.price}</td>
                         <td>
-                            <button className='btn btn-success' onClick={()=>{dispatch({type:'INC-CART-PROD-COUNT',payload:cp})}}>+</button>
-                            <b>{cp.count}</b>
-                            <button className='btn btn-danger' onClick={()=>{dec(cp)}}>-</button>
+                            <i className="bi bi-plus-circle-fill" onClick={()=>{dispatch({type:'INC-CART-PROD-COUNT',payload:cp})}}></i>
+                            <b className='m-2'>{cp.count}</b>
+                            <i className="bi bi-dash-circle-fill" onClick={()=>{dec(cp)}}></i>
                         </td>
-                        <td>{cp.price*cp.count}</td>
-                        <td>
-                        <button onClick={()=>{dispatch({type:'DELETE-CART-PROD',payload:cp})}}>Delete</button>
+                        <td className='text-center'>{cp.price*cp.count}</td>
+                        <td className='text-center'>
+                        <i className='bi bi-trash-fill' onClick={()=>{dispatch({type:'DELETE-CART-PROD',payload:cp})}}></i>
                         </td>
                     </tr>)
                 })
@@ -43,7 +47,7 @@ function Cart({products:{cart},dispatch}) {
             </tbody>
         </table>
         
-        <h1>Total:</h1>
+        <h1 className='text-center'>Total:{cart.length && total()}</h1>
     </div>
   )
 }
