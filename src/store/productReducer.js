@@ -1,9 +1,17 @@
-import products from "./products";
+
 const initialState = {
-    products,
+    products:[],
+    isLoading:false,
     cart:[]
 }
+
 function productReducer(state=initialState,action){
+    if(action.type==='UPDATE_PRODUCTS'){
+        return {...state,products:[...action.payload]}
+    }
+    if(action.type==='TOGGLE_LOADER'){
+        return {...state,isLoading:!state.isLoading}
+    }
     if(action.type==='ADDTOCART'){
         action.payload.count=1
         return {...state,cart:[...state.cart,action.payload]}
