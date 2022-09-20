@@ -12,6 +12,7 @@ import Todolist from './components/Todolist';
 import Counter from './components/Counter';
 import Products from './components/Products';
 import Cart from './components/Cart';
+import Countries from './components/Countries';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -22,6 +23,7 @@ root.render(
         <Route path="/counter" element={<Counter></Counter>}></Route>
         <Route path="/products" element={<Products></Products>}></Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
+        <Route path='/countries' element={<Countries></Countries>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>,

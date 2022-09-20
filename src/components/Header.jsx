@@ -18,6 +18,9 @@ function Header({products:{cart}}) {
                     <Link class="nav-link" to="/products">Products</Link>
                 </li>
                 <li class="nav-item">
+                    <Link class="nav-link" to="/countries">Countries</Link>
+                </li>
+                <li class="nav-item">
                     <Link class="nav-link" to="/cart">
                         <i class="bi bi-cart"></i>
                         <span class="badge bg-danger">{cart.length}</span>
